@@ -1,10 +1,11 @@
 var express = require('express');
-var mongoose = require('mongoose');
+var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
 // MongoDB
-mongoose.connect('mongodb://localhost:27017/his_pcu');
+var dbprescriptions = mongojs('his_pcu',['diagnosis']);
+var dbdrugs = mongojs('afproject',['drugs']);
 
 // Express
 var app = express();
@@ -15,7 +16,14 @@ app.use(cors());
 var port = 8080;
 
 // Routes
-app.use('/api', require('./routes/api'));
+app.get('/api/diagnosis',function (req,res) {
+    console.log("I received a GET request");
+    dbprescriptions.diagnosis.find(function (err,docs) {
+        console.log("Got from db : " + docs);
+        res.json(docs);
+    })
+});
+
 
 // Start server
 app.listen(port);

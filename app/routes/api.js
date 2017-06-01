@@ -10,7 +10,7 @@ Diagnosis.methods(['get', 'put', 'post', 'delete']);
 Diagnosis.register(router, '/diagnosis');
 
 PrescribedDrug.methods(['get', 'put', 'post', 'delete']);
-PrescribedDrug.register(router, '/PrescribedDrug');
+PrescribedDrug.register(router, '/drugs');
 
 // RETURN ROUTER
 module.exports = router;
