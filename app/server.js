@@ -5,7 +5,7 @@ var cors = require('cors');
 
 // MongoDB
 var dbdiagnosis = mongojs('his_pcu',['diagnosis']);
-var dbdrugs = mongojs('afproject',['drugs']);
+var dbdrugs = mongojs('his_pcu',['drugs']);
 
 // Express
 var app = express();
