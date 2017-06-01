@@ -1,7 +1,7 @@
 {
   "name": "his-pcu-server",
   "version": "1.0.0",
-  "description": "Server fot HIS PCU module",
+  "description": "Server for HIS PCU module",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
