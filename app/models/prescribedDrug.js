@@ -22,4 +22,4 @@ var prescribedDrugSchema = new mongoose.Schema({
 });
 
 // Return model
-module.exports = restful.model('newPatient', prescribedDrugSchema);
+module.exports = restful.model('prscribedDrug', prescribedDrugSchema);
