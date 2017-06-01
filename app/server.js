@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 // MongoDB
-var dbprescriptions = mongojs('his_pcu',['diagnosis']);
+var dbdiagnosis = mongojs('his_pcu',['diagnosis']);
 var dbdrugs = mongojs('afproject',['drugs']);
 
 // Express
@@ -16,9 +16,28 @@ app.use(cors());
 var port = 8080;
 
 // Routes
+//get data from the diagnosis collections
 app.get('/api/diagnosis',function (req,res) {
     console.log("I received a GET request");
-    dbprescriptions.diagnosis.find(function (err,docs) {
+    dbdiagnosis.diagnosis.find(function (err,docs) {
+        console.log("Got from db : " + docs);
+        res.json(docs);
+    })
+});
+
+//post data to diagnosis
+app.post('/api/diagnosis',function (req,res) {
+    console.log("req body : " + req.body);
+    dbdiagnosis.diagnosis.insert(req.body,function (err,doc) {
+        res.json(doc);
+    });
+});
+
+
+//get data from the drugs collections
+app.get('/api/drugs',function (req,res) {
+    console.log("I received a GET request");
+    dbdrugs.drugs.find(function (err,docs) {
         console.log("Got from db : " + docs);
         res.json(docs);
     })
