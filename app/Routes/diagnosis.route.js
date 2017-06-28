@@ -23,12 +23,6 @@ router.route("/")
         });
     })
     .get(function (req, res) {
-        // Diagnosis.find(function (err, diagnosis) {
-        //     if (err)
-        //         res.send(err);
-        //     console.log("Diagnosis : " + diagnosis);
-        //     res.json(diagnosis);
-        // });
         Diagnosis
             .find()
             .populate('doctor')
@@ -43,11 +37,15 @@ router.route("/")
 
 router.route("/:id")
     .get(function (req, res) {
-        Diagnosis.findById(req.params.id, function (err, diagnosis) {
-            if (err)
-                res.send(err);
-            res.json(diagnosis);
-        });
+        Diagnosis.findById(req.params.id)
+            .populate('doctor')
+            .populate('patient')// only return the Bears name
+            .exec(function (err, diagnosis) {
+                if (err)
+                    res.send(err);
+                console.log("Data : " + diagnosis.doctor.firstname);
+                res.json(diagnosis);
+            })
     })
     .put(function (req, res) {
         Diagnosis.findById(req.params.id, function (err, diagnosis) {
