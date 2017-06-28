@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const port = 3000;
+const port = 8080;
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/his-pcu-client");
 
-app.use('/api/bears',require("./app/routes/bearRoutes"));
+app.use('/api/diagnosis',require("./app/routes/diagnosis.route"));
 
 app.listen(port);
 console.log("App listening on port " + port);

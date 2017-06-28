@@ -2,9 +2,9 @@
  * Created by Nirmal on 6/28/2017.
  */
 
-var express = require("express");
-var Diagnosis = require("../models/diagnosis");
-var router = express.Router();
+const express = require("express");
+const Diagnosis = require("../models/diagnosis");
+const router = express.Router();
 
 router.use(function (req,res,next) {
     console.log("Accessing Diagnosis API");
@@ -13,7 +13,7 @@ router.use(function (req,res,next) {
 
 router.route("/")
     .post(function (req,res) {
-        var diagnosis = new Diagnosis();
+        let diagnosis = new Diagnosis();
         diagnosis = req.body;
 
         diagnosis.save(function (err) {
@@ -47,7 +47,7 @@ router.route("/:id")
             diagnosis.name = req.body.name;
             diagnosis.id = req.body.id;
 
-            console.log("updating... " + req.params.id)
+            console.log("updating... " + req.params.id);
             diagnosis.save(function (err) {
                 if(err)
                     res.send(err);
