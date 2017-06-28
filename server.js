@@ -20,6 +20,7 @@ mongoose.connect("mongodb://localhost:27017/his_pcu");
 app.use('/api/diagnosis',require("./app/routes/diagnosis.route"));
 app.use('/api/doctor',require("./app/routes/doctor.route"));
 app.use('/api/patient',require("./app/routes/patient.route"));
+app.use('/api/prescription',require("./app/routes/prescription.route"));
 
 
 app.listen(port);
