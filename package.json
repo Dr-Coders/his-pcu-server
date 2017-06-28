@@ -18,8 +18,8 @@
   "homepage": "https://github.com/Dr-Coders/his-pcu-server#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "cors": "^2.8.3",
     "express": "^4.15.3",
-    "mongoose": "^4.10.7"
+    "mongoose": "^4.10.7",
+    "cors": "^2.8.3"
   }
 }

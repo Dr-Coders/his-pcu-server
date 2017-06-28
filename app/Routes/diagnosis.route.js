@@ -13,8 +13,7 @@ router.use(function (req,res,next) {
 
 router.route("/")
     .post(function (req,res) {
-        let diagnosis = new Diagnosis();
-        diagnosis = req.body;
+        var diagnosis = new Diagnosis(req.body);
 
         diagnosis.save(function (err) {
             if(err)
@@ -24,10 +23,11 @@ router.route("/")
         });
     })
     .get(function (req,res) {
-        Diagnosis.find(function (err,diagnosiss) {
+        Diagnosis.find(function (err,diagnosis) {
             if(err)
                 res.send(err);
-            res.json(diagnosiss);
+            console.log("Diagnosis : " + diagnosis);
+            res.json(diagnosis);
         })
     });
 
