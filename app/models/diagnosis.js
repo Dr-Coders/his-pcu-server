@@ -21,6 +21,6 @@ var DiagnosisSchema = new Schema({
     }
 
 
-});
+}, { collection: 'diagnosis' });
 
 module.exports = mongoose.model("Diagnosis",DiagnosisSchema);

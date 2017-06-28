@@ -14,6 +14,6 @@ var DoctorSchema = new Schema({
     contact_res : String,
     contact_mobile : String,
     address : String
-});
+}, { collection: 'doctor' });
 
 module.exports = mongoose.model("Doctor",DoctorSchema);
