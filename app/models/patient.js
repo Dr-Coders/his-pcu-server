@@ -18,7 +18,7 @@ var PatientSchema = new Schema({
     contact_mobile : String,
     email : String,
     guardian_name :String,
-    guardian_relation : String,
+    guardian_relationship : String,
     guardian_contact_res : String,
     guardian_contact_mobile : String,
     height : String,
