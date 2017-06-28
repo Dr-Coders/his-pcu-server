@@ -14,4 +14,4 @@ var DiagnosisSchema = new Schema({
 
 });
 
-module.exports = mongoose.model("Bear",BearSchema);
+module.exports = mongoose.model("Diagnosis",DiagnosisSchema);
