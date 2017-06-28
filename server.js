@@ -18,6 +18,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/his_pcu");
 
 app.use('/api/diagnosis',require("./app/routes/diagnosis.route"));
+app.use('/api/doctor',require("./app/routes/diagnosis.route"));
+
 
 app.listen(port);
 console.log("App listening on port " + port);

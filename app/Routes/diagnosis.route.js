@@ -43,15 +43,13 @@ router.route("/:id")
         Diagnosis.findById(req.params.id,function (err,diagnosis) {
             if(err)
                 res.send(err);
-
-            diagnosis.name = req.body.name;
-            diagnosis.id = req.body.id;
+            diagnosis = req.body;
 
             console.log("updating... " + req.params.id);
             diagnosis.save(function (err) {
                 if(err)
                     res.send(err);
-                res.json({message : " Diagnosis updated to name = " + req.body.name});
+                res.json({message : " Diagnosis updated to name = " + req.body.title});
             })
         })
     })
