@@ -15,10 +15,9 @@ app.use(cors());
 
 const port = 3000;
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/final");
+mongoose.connect("mongodb://localhost:27017/his-pcu-client");
 
 app.use('/api/bears',require("./app/routes/bearRoutes"));
-app.use('/api/keepers',require("./app/routes/keeperRoutes"));
 
 app.listen(port);
 console.log("App listening on port " + port);
