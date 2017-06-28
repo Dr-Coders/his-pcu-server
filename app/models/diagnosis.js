@@ -10,7 +10,16 @@ var DiagnosisSchema = new Schema({
     date : String,
     title : String,
     time : String,
-    content : String
+    content : String,
+    doctor : {
+        type : mongoose.Schema.ObjectId,
+        ref : 'Doctor'
+    },
+    patient : {
+        type :mongoose.Schema.ObjectId,
+        ref : 'Patient'
+    }
+
 
 });
 
