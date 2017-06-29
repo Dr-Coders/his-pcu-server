@@ -26,7 +26,7 @@ router.route("/")
         Diagnosis
             .find()
             .populate('doctor')
-            .populate('patient')// only return the Bears name
+            .populate('patient')
             .exec(function (err, diagnosis) {
                 if (err)
                     res.send(err);
@@ -39,7 +39,7 @@ router.route("/:id")
     .get(function (req, res) {
         Diagnosis.findById(req.params.id)
             .populate('doctor')
-            .populate('patient')// only return the Bears name
+            .populate('patient')
             .exec(function (err, diagnosis) {
                 if (err)
                     res.send(err);
