@@ -14,12 +14,12 @@ router.use(function (req, res, next) {
 router.route("/")
     .post(function (req, res) {
         var diagnosis = new Diagnosis(req.body);
-
+        console.log("Adding diagnosis : " + req.body.doctor + "  " + req.body.title);
         diagnosis.save(function (err) {
             if (err)
                 res.send(err);
-
-            res.json({message: "Diagnosis created! name = " + req.body.title});
+            // else
+            //     res.json({message: "Diagnosis created! name = " + req.body.title});
         });
     })
     .get(function (req, res) {
@@ -51,14 +51,16 @@ router.route("/:id")
         Diagnosis.findById(req.params.id, function (err, diagnosis) {
             if (err)
                 res.send(err);
-            diagnosis = req.body;
+            else {
+                diagnosis = req.body;
 
-            console.log("updating... " + req.params.id);
-            diagnosis.save(function (err) {
-                if (err)
-                    res.send(err);
-                res.json({message: " Diagnosis updated to name = " + req.body.title});
-            })
+                console.log("updating... " + req.params.id);
+                diagnosis.save(function (err) {
+                    if (err)
+                        res.send(err);
+                    res.json({message: " Diagnosis updated to name = " + req.body.title});
+                })
+            }
         })
     })
     .delete(function (req, res) {
