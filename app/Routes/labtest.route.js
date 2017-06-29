@@ -30,7 +30,7 @@ router.route("/")
             .exec(function (err, labtest) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + labtest[0].doctor.firstname);
+                console.log("Data : " + labtest[0].labtestname);
                 res.json(labtest);
             })
     });
@@ -43,7 +43,7 @@ router.route("/:id")
             .exec(function (err, labtest) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + labtest.doctor.firstname);
+                console.log("Data : " + labtest.labtestname);
                 res.json(labtest);
             })
     })
