@@ -14,10 +14,7 @@ var LabtestSchema = new Schema({
     },
     labtestname : String,
     date : String,
-    labresult : [{
-        type : mongoose.Schema.ObjectId,
-        ref : 'LabResult'
-    }] ,
+    labresult : [String] ,
     testinterpretation : String
 }, { collection: 'labtest' });
 
