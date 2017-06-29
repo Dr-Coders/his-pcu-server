@@ -25,6 +25,6 @@ var PatientSchema = new Schema({
     weight : String,
     bloodgroup : String
 
-});
+}, { collection: 'patient' });
 
 module.exports = mongoose.model("Patient",PatientSchema);
