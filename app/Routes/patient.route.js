@@ -13,7 +13,24 @@ router.use(function (req,res,next) {
 
 router.route("/")
     .post(function (req,res) {
-        var patient = new Patient(req.body);
+        var patient = new Patient();
+        patient.firstname = req.body.firstname;
+        patient.sirname = req.body.sirname;
+        patient.nic = req.body.nic;
+        patient.dateofbirth = req.body.dateofbirth;
+        patient.gender = req.body.gender;
+        patient.maritalstatus = req.body.maritalstatus;
+        patient.address = req.body.address;
+        patient.contact_res = req.body.contact_res;
+        patient.contact_mobile = req.body.contact_mobile;
+        patient.email = req.body.email;
+        patient.guardian_name = req.body.guardian_name;
+        patient.guardian_relationship = req.body.guardian_relationship;
+        patient.guardian_contact_res = req.body.guardian_contact_res;
+        patient.guardian_contact_mobile = req.body.guardian_contact_mobile;
+        patient.height = req.body.height;
+        patient.weight = req.body.weight;
+        patient.bloodgroup = req.body.bloodgroup;
 
         patient.save(function (err) {
             if(err)
@@ -44,7 +61,23 @@ router.route("/:id")
             if(err)
                 res.send(err);
 
-            patient = req.body;
+            patient.firstname = req.body.firstname;
+            patient.sirname = req.body.sirname;
+            patient.nic = req.body.nic;
+            patient.dateofbirth = req.body.dateofbirth;
+            patient.gender = req.body.gender;
+            patient.maritalstatus = req.body.maritalstatus;
+            patient.address = req.body.address;
+            patient.contact_res = req.body.contact_res;
+            patient.contact_mobile = req.body.contact_mobile;
+            patient.email = req.body.email;
+            patient.guardian_name = req.body.guardian_name;
+            patient.guardian_relationship = req.body.guardian_relationship;
+            patient.guardian_contact_res = req.body.guardian_contact_res;
+            patient.guardian_contact_mobile = req.body.guardian_contact_mobile;
+            patient.height = req.body.height;
+            patient.weight = req.body.weight;
+            patient.bloodgroup = req.body.bloodgroup;
 
             console.log("updating... " + req.params.id);
             patient.save(function (err) {

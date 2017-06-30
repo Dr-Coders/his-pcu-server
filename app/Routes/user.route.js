@@ -13,7 +13,11 @@ router.use(function (req, res, next) {
 
 router.route("/")
     .post(function (req, res) {
-        var user = new User(req.body);
+        var user = new User();
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.role = req.body.role;
+        user.object = req.body.object;
 
         user.save(function (err) {
             if (err)
@@ -46,7 +50,10 @@ router.route("/:id")
         User.findById(req.params.id, function (err, user) {
             if (err)
                 res.send(err);
-            user = req.body;
+            user.username = req.body.username;
+            user.password = req.body.password;
+            user.role = req.body.role;
+            user.object = req.body.object;
 
             console.log("updating... " + req.params.id);
             user.save(function (err) {

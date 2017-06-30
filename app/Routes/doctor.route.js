@@ -13,7 +13,14 @@ router.use(function (req,res,next) {
 
 router.route("/")
     .post(function (req,res) {
-        var doctor = new Doctor(req.body);
+        var doctor = new Doctor();
+        doctor.firstname = req.body.firstname;
+        doctor.lastname = req.body.lastname;
+        doctor.speciality = req.body.speciality;
+        doctor.nic = req.body.nic;
+        doctor.contact_res = req.body.contact_res;
+        doctor.contact_mobile = req.body.contact_mobile;
+        doctor.address = req.body.address;
 
         doctor.save(function (err) {
             if(err)
@@ -44,7 +51,13 @@ router.route("/:id")
             if(err)
                 res.send(err);
 
-            doctor = req.body;
+            doctor.firstname = req.body.firstname;
+            doctor.lastname = req.body.lastname;
+            doctor.speciality = req.body.speciality;
+            doctor.nic = req.body.nic;
+            doctor.contact_res = req.body.contact_res;
+            doctor.contact_mobile = req.body.contact_mobile;
+            doctor.address = req.body.address;
 
             console.log("updating... " + req.params.id);
             doctor.save(function (err) {

@@ -13,7 +13,12 @@ router.use(function (req, res, next) {
 
 router.route("/")
     .post(function (req, res) {
-        var prescription = new Prescription(req.body);
+        var prescription = new Prescription();
+        prescription.date = req.body.date;
+        prescription.time = req.body.time;
+        prescription.doctor = req.body.doctor;
+        prescription.patient = req.body.patient;
+        prescription.drugs = req.body.drugs;
 
         prescription.save(function (err) {
             if (err)
@@ -51,7 +56,11 @@ router.route("/:id")
         Prescription.findById(req.params.id, function (err, prescription) {
             if (err)
                 res.send(err);
-            prescription = req.body;
+            prescription.date = req.body.date;
+            prescription.time = req.body.time;
+            prescription.doctor = req.body.doctor;
+            prescription.patient = req.body.patient;
+            prescription.drugs = req.body.drugs;
 
             console.log("updating... " + req.params.id);
             prescription.save(function (err) {
