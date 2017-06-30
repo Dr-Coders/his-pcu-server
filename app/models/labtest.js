@@ -15,7 +15,8 @@ var LabtestSchema = new Schema({
     labtestname : String,
     date : String,
     labresult : [String] ,
-    testinterpretation : String
+    testinterpretation : String,
+    labresultstatus : String
 }, { collection: 'labtest' });
 
 module.exports = mongoose.model("Labtest",LabtestSchema);
