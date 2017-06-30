@@ -30,7 +30,7 @@ router.route("/")
             .exec(function (err, labtest) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + labtest[0].labtestname);
+                console.log("Data : " + labtest);
                 res.json(labtest);
             })
     });
