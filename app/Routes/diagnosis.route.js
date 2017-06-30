@@ -13,11 +13,23 @@ router.use(function (req, res, next) {
 
 router.route("/")
     .post(function (req, res) {
-        var diagnosis = new Diagnosis(req.body);
+        var diagnosis = new Diagnosis();
+        diagnosis.title = req.body.title;
+        diagnosis.date = req.body.date;
+        diagnosis.doctor = req.body.doctor;
+        diagnosis.time = req.body.time;
+        diagnosis.content = req.body.content;
+        diagnosis.patient = req.body.patient;
+
         console.log("Adding diagnosis : " + req.body.doctor + "  " + req.body.title);
         diagnosis.save(function (err) {
-            if (err)
+            if (err) {
+                console.log("error diagnosis add : " + err);
                 res.send(err);
+            }
+            else{
+                console.log("ADD diagnosis : " + req.body.title);
+            }
             // else
             //     res.json({message: "Diagnosis created! name = " + req.body.title});
         });
@@ -37,13 +49,13 @@ router.route("/")
 
 router.route("/:id")
     .get(function (req, res) {
-        Diagnosis.findById(req.params.id)
+        Diagnosis.find({"patient" : req.params.id})
             .populate('doctor')
             .populate('patient')
             .exec(function (err, diagnosis) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + diagnosis.doctor.firstname);
+                console.log("Data for patient : " + req.params.id + " is " + diagnosis[0].title + diagnosis.title);
                 res.json(diagnosis);
             })
     })
@@ -71,6 +83,9 @@ router.route("/:id")
                 res.send(err);
             res.json({message: "Diagnosis deleted : " + req.params.id})
         });
+    })
+    .post(function () {
+
     });
 
 module.exports = router;
