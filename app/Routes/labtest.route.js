@@ -13,7 +13,14 @@ router.use(function (req, res, next) {
 
 router.route("/")
     .post(function (req, res) {
-        var labtest = new Labtest(req.body);
+        var labtest = new Labtest();
+        labtest.medicalcase = req.body.medicalcase;
+        labtest.doctor = req.body.doctor;
+        labtest.labtestname = req.body.labtestname;
+        labtest.date = req.body.date;
+        labtest.labresult = req.body.labresult;
+        labtest.testinterpretation = req.body.testinterpretation;
+        labtest.labresultstatus = req.body.labresultstatus;
 
         labtest.save(function (err) {
             if (err)
@@ -51,7 +58,13 @@ router.route("/:id")
         Labtest.findById(req.params.id, function (err, labtest) {
             if (err)
                 res.send(err);
-            labtest = req.body;
+            labtest.medicalcase = req.body.medicalcase;
+            labtest.doctor = req.body.doctor;
+            labtest.labtestname = req.body.labtestname;
+            labtest.date = req.body.date;
+            labtest.labresult = req.body.labresult;
+            labtest.testinterpretation = req.body.testinterpretation;
+            labtest.labresultstatus = req.body.labresultstatus;
 
             console.log("updating... " + req.params.id);
             labtest.save(function (err) {
