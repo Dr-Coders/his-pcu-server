@@ -64,7 +64,12 @@ router.route("/:id")
             if (err)
                 res.send(err);
             else {
-                diagnosis = req.body;
+                diagnosis.title = req.body.title;
+                diagnosis.date = req.body.date;
+                diagnosis.doctor = req.body.doctor;
+                diagnosis.time = req.body.time;
+                diagnosis.content = req.body.content;
+                diagnosis.patient = req.body.patient;
 
                 console.log("updating... " + req.params.id);
                 diagnosis.save(function (err) {
