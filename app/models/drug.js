@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 var DrugSchema = new Schema({
     name : String,
     price : Number,
-    quantitypertablet : Number,
+    quantitypertablet : String,
     manufacture : String
 
 }, { collection: 'drug' });

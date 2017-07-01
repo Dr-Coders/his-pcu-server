@@ -17,7 +17,17 @@ var PrescriptionSchema = new Schema({
         type :mongoose.Schema.ObjectId,
         ref : 'Patient'
     },
-    drugs : [ String ]
+    drugs : [ {
+        drug : {
+            type : mongoose.Schema.ObjectId,
+            ref : 'Drug'
+        },
+        dose : Number,
+        when : [Boolean],
+        meal : String,
+        days : Number,
+        quantity : Number
+    } ]
 
 
 }, { collection: 'prescripiton' });

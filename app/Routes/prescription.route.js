@@ -31,11 +31,12 @@ router.route("/")
         Prescription
             .find()
             .populate('doctor')
-            .populate('patient')// only return the Bears name
+            .populate('patient')
+            .populate('drugs.drug')
             .exec(function (err, prescription) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + prescription[0].drugs[0]);
+                // console.log("Data : " + prescription[0].drugs[0]);
                 res.json(prescription);
             })
     });
@@ -44,11 +45,12 @@ router.route("/:id")
     .get(function (req, res) {
         Prescription.findById(req.params.id)
             .populate('doctor')
-            .populate('patient')// only return the Bears name
+            .populate('patient')
+            .populate('drugs.drug')
             .exec(function (err, prescription) {
                 if (err)
                     res.send(err);
-                console.log("Data : " + prescription.drugs[0]);
+                // console.log("Data : " + prescription.drugs[0]);
                 res.json(prescription);
             })
     })
