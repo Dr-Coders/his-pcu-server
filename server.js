@@ -23,6 +23,7 @@ app.use('/api/patient',require("./app/routes/patient.route"));
 app.use('/api/prescription',require("./app/routes/prescription.route"));
 app.use('/api/user',require("./app/routes/user.route"));
 app.use('/api/labtest',require("./app/routes/labtest.route"));
+app.use('/api/drug',require("./app/routes/drug.route"));
 
 app.listen(port,function () {
     console.log("App listening on port " + port);
