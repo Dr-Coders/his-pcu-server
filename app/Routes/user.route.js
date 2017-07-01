@@ -26,16 +26,13 @@ router.route("/")
             res.json({message: "User created! name = " + req.body.username});
         });
     })
-    .get(function (req, res) {
-        User
-            .find()
-            .populate('object')
-            .exec(function (err, user) {
-                if (err)
-                    res.send(err);
-                console.log("Data : " + user.username);
-                res.json(user);
-            })
+    .get(function (req,res) {
+        User.find(function (err,user) {
+            if(err)
+                res.send(err);
+            console.log("User : " + user);
+            res.json(user);
+        })
     });
 
 router.route("/:id")

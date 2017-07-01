@@ -24,7 +24,7 @@ app.use('/api/prescription',require("./app/routes/prescription.route"));
 app.use('/api/user',require("./app/routes/user.route"));
 app.use('/api/labtest',require("./app/routes/labtest.route"));
 
-app.listen(port,'0.0.0.0',function () {
+app.listen(port,function () {
     console.log("App listening on port " + port);
 });
 
